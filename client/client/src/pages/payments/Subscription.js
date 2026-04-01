@@ -53,38 +53,34 @@ function Subscription() {
                         <div className="card-body">
                             <h3 className="card-title">Subscription Summary</h3>
                             <hr />
-                            {subscription ? (
-                                <div className="card-text">
-                                    <div className="pb-2">
-                                        <strong>Start Date: </strong> {formatDate(subscription.start)}
-                                    </div>
-
-                                    <div className="pb-2">
-                                        <strong>End Date: </strong> {formatDate(subscription.end)}
-                                    </div>
-
-                                    <div className="pb-2">
-                                        <strong>Last Payment Date: </strong> {formatDate(subscription.lastBillDate)}
-                                    </div>
-
-                                    <div className="pb-2">
-                                        <strong>Next Payment Date: </strong> {formatDate(subscription.nextBillDate)}
-                                    </div>
-
-                                    <div className="pb-2">
-                                        <strong>Total Payments Made: </strong> {subscription.paymentsMade}
-                                    </div>
-
-                                    <div className="pb-2">
-                                        <strong>Payments Remaining: </strong> {subscription.paymentsRemaining}
-                                    </div>
+                            <p className="card-text">
+                                <div className="pb-2">
+                                    <strong>Start Date: </strong> {formatDate(subscription.start)}
                                 </div>
-                            ) : (
-                                <div className="alert alert-info">No active subscription found.</div>
-                            )}
+
+                                <div className="pb-2">
+                                    <strong>End Date: </strong> {formatDate(subscription.end)}
+                                </div>
+
+                                <div className="pb-2">
+                                    <strong>Last Payment Date: </strong> {formatDate(subscription.lastBillDate)}
+                                </div>
+
+                                <div className="pb-2">
+                                    <strong>Next Payment Date: </strong> {formatDate(subscription.nextBillDate)}
+                                </div>
+
+                                <div className="pb-2">
+                                    <strong>Total Payments Made: </strong> {subscription.paymentsMade}
+                                </div>
+
+                                <div className="pb-2">
+                                    <strong>Payments Remaining: </strong> {subscription.paymentsRemaining}
+                                </div>
+                            </p>
                             <hr />
                             <div className="text-center">
-                                <button className="btn btn-danger w-50" onClick={() => handleCancel()} disabled={!subscription}>Cancel</button>
+                                <button className="btn btn-danger w-50" onClick={() => handleCancel()}>Cancel</button>
                             </div>
                         </div>
                     </div>

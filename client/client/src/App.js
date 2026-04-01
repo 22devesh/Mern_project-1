@@ -10,14 +10,20 @@ import Logout from "./pages/Logout";
 import { serverEndpoint } from "./config/config";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_USER } from "./redux/user/actions";
-import UserLayout from "./Layout/UserLayout";
+import UserLayout from "./Layout/UserLayout"
 import Register from "./pages/Register";
 import { Spinner } from "react-bootstrap";
-import ManageUsers from "./pages/users/ManageUsers";
+import ManageUsers from "./pages/payments/ManagePayments";
 import UnauthorizedAccess from "./components/UnauthorizedAccess";
 import ProtectedRoute from "./rbac/ProtectedRoute";
 import ManagePayments from "./pages/payments/ManagePayments";
 import AnalyticsDashboard from "./pages/links/AnalyticsDashboard";
+
+
+
+import ForgetPassword from './pages/ForgetPassword';
+import ResetPassword from './pages/ResetPassword';
+
 
 function App() {
   // const [userDetails, setUserDetails] = useState(null);
@@ -27,7 +33,7 @@ function App() {
 
   const isUserLoggedIn = async () => {
     try {
-      const response = await axios.post(`${serverEndpoint}/auth/is-user-logged-in`, {}, {
+      const response = await axios.post(`/api/auth/is-user-logged-in`, {}, {
         withCredentials: true
       });
       dispatch({
@@ -105,6 +111,14 @@ function App() {
         </UserLayout> :
         <Navigate to="/login" />
       } />
+      <Route path="/forget-password" element={<AppLayout><ForgetPassword /></AppLayout>} />
+      <Route path="/reset-password" element={
+        userDetails ?
+          <UserLayout><ResetPassword email={userDetails.email} hideEmailField={true} /></UserLayout> :
+          <AppLayout><ResetPassword /></AppLayout>
+      } />
+
+
     </Routes>
   );
 }
